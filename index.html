@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İclal Boroğlu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #ffd93d;
+            --dark-color: #666;
+            --light-color: #fff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--dark-color);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-title {
+            font-family: 'Pacifico', cursive;
+            color: var(--light-color);
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+            background: linear-gradient(45deg, #ff9a9e, #a8edea, #d299c2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--light-color);
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .message-section {
+            margin: 30px 0;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 25px;
+            margin: 0 auto;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .love-message {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .photo-album-section {
+            margin: 40px 0;
+        }
+
+        .photo-album {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+            position: relative;
+            perspective: 1000px;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .photo-text {
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        .slide-in {
+            animation: slideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .flip {
+            animation: flip 1s ease;
+        }
+
+        .bounce-effect {
+            animation: bounceEffect 1s ease;
+        }
+
+        .rotate {
+            animation: rotate 1s ease;
+        }
+
+        .zoom-in {
+            animation: zoomIn 1s ease;
+        }
+
+        .swing {
+            animation: swing 1s ease;
+        }
+
+        @keyframes slideIn {
+            from { 
+                transform: translateX(400px) rotate(15deg) scale(0.8); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateX(0) rotate(0) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        @keyframes flip {
+            0% { transform: rotateY(0) scale(0.8); opacity: 0; }
+            50% { transform: rotateY(180deg) scale(1.1); opacity: 1; }
+            100% { transform: rotateY(360deg) scale(1); }
+        }
+
+        @keyframes bounceEffect {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+            40% { transform: translateY(-50px) scale(1.1); }
+            60% { transform: translateY(-25px) scale(1.05); }
+        }
+
+        @keyframes rotate {
+            from { 
+                transform: rotate(-180deg) scale(0.5); 
+                opacity: 0; 
+            }
+            to { 
+                transform: rotate(0) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0) rotate(180deg); 
+                opacity: 0; 
+            }
+            to { 
+                transform: scale(1) rotate(0); 
+                opacity: 1; 
+            }
+        }
+
+        @keyframes swing {
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .love-meter-section {
+            margin: 50px 0;
+        }
+
+        .love-meter {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 600px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .meter-title {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .slider-container {
+            margin: 25px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 12px;
+            -webkit-appearance: none;
+            background: linear-gradient(90deg, #ff9a9e, #a8edea);
+            border-radius: 10px;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(255, 107, 107, 0.5);
+            border: 3px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.8);
+        }
+
+        .slider-value {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .meter-button {
+            background: linear-gradient(45deg, var(--primary-color), #ff8e8e);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.8);
+        }
+
+        .meter-button:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .result-container {
+            margin-top: 25px;
+            min-height: 80px;
+        }
+
+        .result {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.5s ease;
+        }
+
+        .angry-face {
+            font-size: 6rem;
+            animation: shake 0.1s ease-in-out infinite;
+            display: none;
+            margin: 20px auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .happy-face {
+            font-size: 6rem;
+            display: none;
+            margin: 20px auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+            animation: bounce 1s infinite;
+        }
+
+        .surprise-face {
+            font-size: 4rem;
+            position: fixed;
+            z-index: 2000;
+            pointer-events: none;
+            animation: floatUp 3s ease-out forwards;
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti {
+            width: 12px;
+            height: 12px;
+            opacity: 0.9;
+        }
+
+        .heart {
+            font-size: 2rem;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { 
+                transform: translateY(100vh) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-15px); }
+            75% { transform: translateX(15px); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-50px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0.5);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .photo-album {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .love-message {
+                font-size: 1.5rem;
+            }
+            
+            .meter-title {
+                font-size: 1.5rem;
+            }
+            
+            .result {
+                font-size: 1.3rem;
+            }
+            
+            .angry-face, .happy-face {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-container"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">İclal Boroğlu</h1>
+            <h2 class="subtitle">Karımı çok seviyorum</h2>
+        </header>
+        
+        <section class="message-section">
+            <div class="message-box">
+                <p class="love-message">KARİMİ AŞİGİM</p>
+            </div>
+        </section>
+
+        <section class="photo-album-section">
+            <div class="photo-album" id="photoAlbum">
+                <div class="photo slide-in" id="currentPhoto">
+                    <span class="photo-text">📸 Fotoğraf 1</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="love-meter-section">
+            <div class="love-meter">
+                <h3 class="meter-title">Kocanı ne kadar seviyorsun?</h3>
+                
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="loveSlider">
+                    <div class="slider-value" id="sliderValue">%50</div>
+                </div>
+                
+                <button class="meter-button" id="checkLoveBtn">
+                    <span class="button-text">SEVİYEYİ KONTROL ET!</span>
+                </button>
+                
+                <div class="result-container">
+                    <div class="result" id="loveResult"></div>
+                    <div class="angry-face" id="angryFace">😠</div>
+                    <div class="happy-face" id="happyFace">😊</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const photos = [
+            { text: '📸 Fotoğraf 1', gradient: 'linear-gradient(45deg, #ff9a9e, #fecfef)' },
+            { text: '🌟 Fotoğraf 2', gradient: 'linear-gradient(45deg, #a8edea, #fed6e3)' },
+            { text: '💫 Fotoğraf 3', gradient: 'linear-gradient(45deg, #ffecd2, #fcb69f)' },
+            { text: '✨ Fotoğraf 4', gradient: 'linear-gradient(45deg, #ff9a9e, #a8edea)' },
+            { text: '💝 Fotoğraf 5', gradient: 'linear-gradient(45deg, #d299c2, #fef9d7)' }
+        ];
+
+        const animations = ['slide-in', 'flip', 'bounce-effect', 'rotate', 'zoom-in', 'swing'];
+        let currentPhotoIndex = 0;
+        let particleInterval;
+        let heartInterval;
+
+        const slider = document.getElementById('loveSlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const checkLoveBtn = document.getElementById('checkLoveBtn');
+        const loveResult = document.getElementById('loveResult');
+        const angryFace = document.getElementById('angryFace');
+        const happyFace = document.getElementById('happyFace');
+        const currentPhoto = document.getElementById('currentPhoto');
+        const photoText = document.querySelector('.photo-text');
+
+        slider.addEventListener('input', updateSliderValue);
+        checkLoveBtn.addEventListener('click', checkLove);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initParticles();
+            startPhotoAlbum();
+            createFloatingHearts();
+        });
+
+        function updateSliderValue() {
+            sliderValue.textContent = '%' + this.value;
+        }
+
+        function startPhotoAlbum() {
+            changePhoto();
+            setInterval(changePhoto, 3000);
+        }
+
+        function changePhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+            currentPhoto.className = 'photo';
+            photoText.textContent = photos[currentPhotoIndex].text;
+            currentPhoto.style.background = photos[currentPhotoIndex].gradient;
+            
+            setTimeout(() => {
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                currentPhoto.classList.add(randomAnimation);
+                setTimeout(() => {
+                    createFloatingEffect();
+                }, 500);
+            }, 50);
+        }
+
+        function checkLove() {
+            const lovePercentage = parseInt(slider.value);
+            loveResult.textContent = '';
+            angryFace.style.display = 'none';
+            happyFace.style.display = 'none';
+            
+            loveResult.textContent = 'SEVİYE: %' + lovePercentage;
+            loveResult.style.color = '#ff6b6b';
+            loveResult.style.transform = 'scale(1)';
+            
+            loveResult.style.animation = 'bounce 0.5s ease';
+            setTimeout(() => {
+                loveResult.style.animation = '';
+            }, 500);
+            
+            if (lovePercentage === 100) {
+                setTimeout(() => {
+                    loveResult.textContent = 'Afferin kız, helal olsun';
+                    loveResult.style.color = '#4ecdc4';
+                    loveResult.style.fontSize = '2rem';
+                    happyFace.style.display = 'block';
+                    createCelebrationEffect();
+                    createHeartExplosion();
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    loveResult.textContent = 'YALAN DİMİ';
+                    loveResult.style.color = '#ff0000';
+                    loveResult.style.fontSize = '2.5rem';
+                    angryFace.style.display = 'block';
+                    angryFace.style.animation = 'shake 0.2s ease-in-out infinite';
+                    createExplosionEffect();
+                    createHeartExplosion();
+                    createSurpriseEmojis();
+                }, lovePercentage < 100 ? 1500 : 500);
+            }
+        }
+
+        function initParticles() {
+            // Daha az konfeti
+            for(let i = 0; i < 2; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 800);
+            }
+            
+            // Daha seyrek konfeti
+            particleInterval = setInterval(() => {
+                createConfetti();
+            }, 6000);
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('particles-container');
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffd93d', '#96ceb4'];
+            
+            // Yarı yarıya azaltılmış konfeti (15 tane)
+            for (let i = 0; i < 15; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'particle confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                container.appendChild(confetti);
+                
+                const rotation = Math.random() * 720;
+                confetti.style.transform = 'rotate(' + rotation + 'deg)';
+                
+                const duration = Math.random() * 4000 + 3000;
+                const animation = confetti.animate([
+                    { 
+                        transform: 'translateY(0) rotate(0deg)',
+                        opacity: parseFloat(confetti.style.opacity)
+                    },
+                    { 
+                        transform: 'translateY(' + (window.innerHeight + 50) + 'px) rotate(' + rotation + 'deg)',
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                };
+            }
+        }
+
+        function createFloatingHearts() {
+            const container = document.getElementById('particles-container');
+            const hearts = ['❤️', '💖', '💘', '💝', '💗'];
+            
+            // Yarı yarıya azaltılmış kalp üretimi
+            heartInterval = setInterval(() => {
+                for (let i = 0; i < 8; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'particle heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '-30px';
+                    heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+                    heart.style.opacity = Math.random() * 0.7 + 0.3;
+                    heart.style.zIndex = '1000';
+                    
+                    container.appendChild(heart);
+                    
+                    const duration = Math.random() * 4000 + 2000;
+                    const horizontalMovement = (Math.random() - 0.5) * 80;
+                    
+                    const animation = heart.animate([
+                        { 
+                            transform: 'translateY(0) translateX(0) rotate(0deg)',
+                            opacity: parseFloat(heart.style.opacity)
+                        },
+                        { 
+                            transform: 'translateY(' + (window.innerHeight + 50) + 'px) translateX(' + horizontalMovement + 'px) rotate(' + (Math.random() * 360) + 'deg)',
+                            opacity: 0
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'linear'
+                    });
+                    
+                    animation.onfinish = () => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    };
+                }
+            }, 1200); // Daha seyrek üretim
+        }
+
+        function createHeartExplosion() {
+            const container = document.getElementById('particles-container');
+            const hearts = ['❤️', '💖', '💘', '💝'];
+            
+            // Yarı yarıya azaltılmış patlama (75 kalp)
+            for (let i = 0; i < 75; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'particle heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                    heart.style.opacity = Math.random() * 0.8 + 0.2;
+                    heart.style.zIndex = '1000';
+                    
+                    container.appendChild(heart);
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 300 + 150;
+                    const duration = Math.random() * 1200 + 600;
+                    const rotation = Math.random() * 360;
+                    
+                    const animation = heart.animate([
+                        { 
+                            transform: 'translate(-50%, -50%) scale(0) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: 'translate(-50%, -50%) scale(1) rotate(' + (rotation * 0.5) + 'deg)',
+                            opacity: parseFloat(heart.style.opacity)
+                        },
+                        { 
+                            transform: 'translate(' + (Math.cos(angle) * distance - 50) + '%, ' + (Math.sin(angle) * distance - 50) + '%) scale(0.7) rotate(' + rotation + 'deg)',
+                            opacity: 0
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0, 0.9, 0.57, 1)'
+                    });
+                    
+                    animation.onfinish = () => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    };
+                }, i * 20);
+            }
+        }
+
+        function createSurpriseEmojis() {
+            const container = document.getElementById('particles-container');
+            const surprises = ['😮', '😲', '😳', '😱', '🙀', '😵', '🤯', '🤭'];
+            
+            // Heryerden dönen şaşırma emojileri
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const surprise = document.createElement('div');
+                    surprise.className = 'surprise-face';
+                    surprise.textContent = surprises[Math.floor(Math.random() * surprises.length)];
+                    surprise.style.left = Math.random() * 100 + 'vw';
+                    surprise.style.fontSize = Math.random() * 30 + 30 + 'px';
+                    surprise.style.opacity = Math.random() * 0.8 + 0.4;
+                    surprise.style.zIndex = '2000';
+                    
+                    container.appendChild(surprise);
+                    
+                    // Baloncuk gibi yukarı çıkma animasyonu
+                    const animation = surprise.animate([
+                        { 
+                            transform: 'translateY(100vh) scale(0) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: 'translateY(' + (Math.random() * -200 - 100) + 'px) scale(1) rotate(' + (Math.random() * 360) + 'deg)',
+                            opacity: parseFloat(surprise.style.opacity)
+                        },
+                        { 
+                            transform: 'translateY(' + (Math.random() * -400 - 200) + 'px) scale(0.7) rotate(' + (Math.random() * 720) + 'deg)',
+                            opacity: 0
+                        }
+                    ], {
+                        duration: Math.random() * 3000 + 2000,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    });
+                    
+                    animation.onfinish = () => {
+                        if (surprise.parentNode) {
+                            surprise.parentNode.removeChild(surprise);
+                        }
+                    };
+                }, i * 100); // Hızlı ardışık üretim
+            }
+        }
+
+        function createFloatingEffect() {
+            const photoElement = document.getElementById('currentPhoto');
+            photoElement.style.boxShadow = '0 0 50px rgba(255, 107, 107, 0.9)';
+            
+            setTimeout(() => {
+                photoElement.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            }, 1000);
+        }
+
+        function createExplosionEffect() {
+            const container = document.getElementById('particles-container');
+            const colors = ['#ff6b6b', '#ff0000', '#ffd93d'];
+            
+            // Azaltılmış patlama efekti
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                particle.style.width = Math.random() * 8 + 4 + 'px';
+                particle.style.height = Math.random() * 8 + 4 + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = Math.random() * 0.8 + 0.2;
+                particle.style.zIndex = '1000';
+                
+                container.appendChild(particle);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 250 + 100;
+                const duration = Math.random() * 1000 + 500;
+                
+                const animation = particle.animate([
+                    { 
+                        transform: 'translate(-50%, -50%) scale(1)',
+                        opacity: parseFloat(particle.style.opacity)
+                    },
+                    { 
+                        transform: 'translate(' + (Math.cos(angle) * distance - 50) + '%, ' + (Math.sin(angle) * distance - 50) + '%) scale(0)',
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0, 0.9, 0.57, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                };
+            }
+        }
+
+        function createCelebrationEffect() {
+            const container = document.getElementById('particles-container');
+            const colors = ['#4ecdc4', '#ffd93d', '#96ceb4'];
+            
+            // Azaltılmış kutlama efekti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.textContent = Math.random() > 0.5 ? '✨' : '🌟';
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.top = '-30px';
+                    particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+                    particle.style.opacity = Math.random() * 0.8 + 0.2;
+                    particle.style.zIndex = '1000';
+                    
+                    container.appendChild(particle);
+                    
+                    const duration = Math.random() * 3000 + 1500;
+                    const horizontalMovement = (Math.random() - 0.5) * 150;
+                    
+                    const animation = particle.animate([
+                        { 
+                            transform: 'translateY(0) translateX(0) rotate(0deg)',
+                            opacity: parseFloat(particle.style.opacity)
+                        },
+                        { 
+                            transform: 'translateY(' + (window.innerHeight + 50) + 'px) translateX(' + horizontalMovement + 'px) rotate(' + (Math.random() * 360) + 'deg)',
+                            opacity: 0
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    });
+                    
+                    animation.onfinish = () => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    };
+                }, i * 40);
+            }
+        }
+
+        window.addEventListener('beforeunload', function() {
+            if (particleInterval) {
+                clearInterval(particleInterval);
+            }
+            if (heartInterval) {
+                clearInterval(heartInterval);
+            }
+        });
+    </script>
+</body>
+</html>
