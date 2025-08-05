@@ -143,6 +143,7 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
+            display: none;
         }
 
         .slide-in {
@@ -492,7 +493,7 @@
         <section class="photo-album-section">
             <div class="photo-album" id="photoAlbum">
                 <div class="photo slide-in" id="currentPhoto">
-                    <span class="photo-text">📸 Fotoğraf 1</span>
+                    <span class="photo-text"></span>
                 </div>
             </div>
         </section>
@@ -520,13 +521,20 @@
     </div>
 
     <script>
-        const photos = [
-            { text: '📸 Fotoğraf 1', gradient: 'linear-gradient(45deg, #ff9a9e, #fecfef)' },
-            { text: '🌟 Fotoğraf 2', gradient: 'linear-gradient(45deg, #a8edea, #fed6e3)' },
-            { text: '💫 Fotoğraf 3', gradient: 'linear-gradient(45deg, #ffecd2, #fcb69f)' },
-            { text: '✨ Fotoğraf 4', gradient: 'linear-gradient(45deg, #ff9a9e, #a8edea)' },
-            { text: '💝 Fotoğraf 5', gradient: 'linear-gradient(45deg, #d299c2, #fef9d7)' }
+        // Google Drive fotoğraflarını doğrudan görüntülenebilir hale getir
+        const photoUrls = [
+            'https://drive.google.com/uc?id=1RKqfI5_2oLBaZnbPbWHf93iKR_lBedAy',
+            'https://drive.google.com/uc?id=1AJLV0t4ieocUm83R8zPB_tYWuYKUNLmr',
+            'https://drive.google.com/uc?id=1XuyMh543DGHzPBjxSUpD1LOXJCcJOdIA',
+            'https://drive.google.com/uc?id=1mLpWrk7b4XdZhSE78dpZHH8SZyS49Aon',
+            'https://drive.google.com/uc?id=1MFQOHahjDL0Y_-Mj2DkvQZ9OiagNxxNO'
         ];
+
+        const photos = photoUrls.map((url, index) => ({
+            text: '',
+            url: url,
+            type: 'image'
+        }));
 
         const animations = ['slide-in', 'flip', 'bounce-effect', 'rotate', 'zoom-in', 'swing'];
         let currentPhotoIndex = 0;
@@ -563,8 +571,10 @@
         function changePhoto() {
             currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
             currentPhoto.className = 'photo';
-            photoText.textContent = photos[currentPhotoIndex].text;
-            currentPhoto.style.background = photos[currentPhotoIndex].gradient;
+            
+            // Fotoğrafı arka plan olarak ayarla
+            currentPhoto.style.backgroundImage = 'url(' + photos[currentPhotoIndex].url + ')';
+            photoText.style.display = 'none'; // Metni gizle
             
             setTimeout(() => {
                 const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
@@ -614,14 +624,12 @@
         }
 
         function initParticles() {
-            // Daha az konfeti
             for(let i = 0; i < 2; i++) {
                 setTimeout(() => {
                     createConfetti();
                 }, i * 800);
             }
             
-            // Daha seyrek konfeti
             particleInterval = setInterval(() => {
                 createConfetti();
             }, 6000);
@@ -631,7 +639,6 @@
             const container = document.getElementById('particles-container');
             const colors = ['#ff6b6b', '#4ecdc4', '#ffd93d', '#96ceb4'];
             
-            // Yarı yarıya azaltılmış konfeti (15 tane)
             for (let i = 0; i < 15; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'particle confetti';
@@ -675,7 +682,6 @@
             const container = document.getElementById('particles-container');
             const hearts = ['❤️', '💖', '💘', '💝', '💗'];
             
-            // Yarı yarıya azaltılmış kalp üretimi
             heartInterval = setInterval(() => {
                 for (let i = 0; i < 8; i++) {
                     const heart = document.createElement('div');
@@ -712,14 +718,13 @@
                         }
                     };
                 }
-            }, 1200); // Daha seyrek üretim
+            }, 1200);
         }
 
         function createHeartExplosion() {
             const container = document.getElementById('particles-container');
             const hearts = ['❤️', '💖', '💘', '💝'];
             
-            // Yarı yarıya azaltılmış patlama (75 kalp)
             for (let i = 0; i < 75; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
@@ -769,7 +774,6 @@
             const container = document.getElementById('particles-container');
             const surprises = ['😮', '😲', '😳', '😱', '🙀', '😵', '🤯', '🤭'];
             
-            // Heryerden dönen şaşırma emojileri
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const surprise = document.createElement('div');
@@ -782,7 +786,6 @@
                     
                     container.appendChild(surprise);
                     
-                    // Baloncuk gibi yukarı çıkma animasyonu
                     const animation = surprise.animate([
                         { 
                             transform: 'translateY(100vh) scale(0) rotate(0deg)',
@@ -806,7 +809,7 @@
                             surprise.parentNode.removeChild(surprise);
                         }
                     };
-                }, i * 100); // Hızlı ardışık üretim
+                }, i * 100);
             }
         }
 
@@ -823,7 +826,6 @@
             const container = document.getElementById('particles-container');
             const colors = ['#ff6b6b', '#ff0000', '#ffd93d'];
             
-            // Azaltılmış patlama efekti
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -868,7 +870,6 @@
             const container = document.getElementById('particles-container');
             const colors = ['#4ecdc4', '#ffd93d', '#96ceb4'];
             
-            // Azaltılmış kutlama efekti
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const particle = document.createElement('div');
